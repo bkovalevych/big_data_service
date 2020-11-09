@@ -1,13 +1,16 @@
+FROM ubuntu
+MAINTAINER Bohdan Kovalevych bohdan.kovalevych@nure.ua
+
+RUN apt-get update
+RUN apt-get install -y git python-virtualenv
+RUN git clone https://github.com/bkovalevych/big_data_service.git
+RUN cd ./app
+WORKDIR ./app
 FROM jupyter/scipy-notebook
 
-COPY app/requirements.txt ./requirements.txt
+
 RUN pip install -r requirements.txt
+ENV MODEL_NAME=model/model.pkl
+ENV DATASET_NAME=model/train.csv
 
-RUN mkdir model
-ENV MODEL_DIR=./model
-ENV MODEL_FILE=model.pkl
-ENV DATASET_FILE=train.csv
-
-COPY app ./
-
-RUN python3 train.py
+RUN python3 app.py
