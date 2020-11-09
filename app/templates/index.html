@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>Cars prediction</title>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div class="login">
+	<h1>Car Price Forecasting</h1>
+    <form action="{{ url_for('predict')}}" method="post">
+        {% for input in num_inputs %}
+        <label for="{{ input }}">
+            {{ input }}
+            {% if required_features[input]%}
+                   <span style="color: red ">*</span>
+            {% endif%}
+        </label>
+        <input type="number" name="{{ input }}" id="{{ input }}"
+                   min="0"
+                   step="{{ steps[input] }}"
+                   {% if form %}
+                   value="{{ form[input] }}"
+                   {% endif %}
+                   {% if required_features[input]%}
+                   required="required"
+                   {% endif%}
+            />
+
+        {% endfor %}
+        {% for key, values in cat_inputs.items() %}
+            <label for="{{ key }}">
+                {{ key }}
+                {% if required_features[key]%}
+                <span style="color: red ">*</span>
+                {% endif%}
+            </label>
+            <select name="{{ key }}" id="{{ key }}"
+                 {% if required_features[key]%}
+                   required="required"
+                {% endif%}
+            >
+                    {% for val in values %}
+                        <option value="{{ val }}"
+                                {% if form  %}
+                                    {% if form[key] == val %}
+                                        selected="selected"
+                                    {% endif %}
+
+                                {% endif %}
+                        >{{ val }}</option>
+                    {% endfor %}
+            </select>
+        {% endfor %}
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict sales in third month</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+</body>
+</html>
