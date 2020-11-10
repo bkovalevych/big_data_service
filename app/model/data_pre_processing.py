@@ -2,6 +2,7 @@
 # coding: utf-8
 
 import sys
+import os
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import MinMaxScaler
@@ -139,6 +140,9 @@ def prepare_test(data: pd.DataFrame):
     data[train_vars] = scaler.transform(data[train_vars])
     return data[selected_feats]
 
+dataset_name = os.environ["DATASET_NAME"]
+train_data = pd.read_csv(dataset_name)
+processed_train = process_data(train_data)
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
