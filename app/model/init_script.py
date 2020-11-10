@@ -1,7 +1,7 @@
 import pandas as pd
 import pickle
-from .data_pre_processing import process_data
-from .train import train_model
+from data_pre_processing import process_data
+from train import train_model
 import os
 import pkg_resources
 model_name = os.environ["MODEL_NAME"]
