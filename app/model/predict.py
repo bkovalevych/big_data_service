@@ -1,8 +1,10 @@
 import pickle
 import pandas as pd
-import os
 import numpy as np
-from .data_pre_processing import prepare_test
+import os
+import sys
+sys.path.append(os.path.join(sys.path[0], 'model'))
+from data_pre_processing import prepare_test
 
 
 model_name = os.environ["MODEL_NAME"]

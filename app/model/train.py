@@ -4,7 +4,6 @@
 
 import pandas as pd
 import sys
-import numpy as np
 import pickle
 from sklearn.linear_model import Lasso
 from sklearn.feature_selection import SelectFromModel
@@ -23,6 +22,8 @@ def train_model(data: pd.DataFrame):
     sel_ = SelectFromModel(Lasso(alpha=0.005, random_state=1243))
     sel_.fit(x_train, y_train)
     selected_feats = x_train.columns[(sel_.estimator_.coef_ != 0).ravel().tolist()]
+    saved_data = pd.DataFrame(selected_feats)
+    saved_data.to_csv('saved_feats.csv')
     for feature in selected_feats:
         global_selected_feats.append(feature)
 

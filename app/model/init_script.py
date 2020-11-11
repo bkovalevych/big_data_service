@@ -1,11 +1,12 @@
 import pandas as pd
 import pickle
-import importlib
-
-from app.model.data_pre_processing import process_data
-from app.model.train import train_model
 import os
-import pkg_resources
+import sys
+sys.path.append(os.path.join(sys.path[0], 'model'))
+from data_pre_processing import process_data
+from train import train_model
+
+
 model_name = os.environ["MODEL_NAME"]
 dataset_name = os.environ["DATASET_NAME"]
 

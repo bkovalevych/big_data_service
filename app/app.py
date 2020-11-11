@@ -1,9 +1,10 @@
-import numpy as np
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, render_template
 import pandas as pd
+import os
+import sys
+sys.path.append(os.path.join(sys.path[0], 'model'))
 from model.data_pre_processing import process_data, cat_vars, features, dtypes, required_features
 from model.predict import predict as predict_func
-from io import StringIO
 app = Flask(__name__)
 
 
@@ -54,4 +55,5 @@ def predict():
 
 if __name__ == "__main__":
     print("__name__")
-    app.run()
+    app.run(host='0.0.0.0',
+            debug=True)

@@ -12,6 +12,5 @@ RUN pip3 install -r requirements.txt
 ENV MODEL_NAME=model/model.pkl
 ENV DATASET_NAME=model/train.csv
 
-CMD python3 ./model/init_script.py
-ENTRYPOINT ['python3']
-CMD ['app.py']
+RUN python3 model/init_script.py
+CMD python3 app.py

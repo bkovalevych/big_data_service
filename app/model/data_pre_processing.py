@@ -1,16 +1,19 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-import sys
-import os
+
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import MinMaxScaler
 import warnings
-from .train import global_selected_feats as selected_feats
+import os
+import sys
+from os import path
+
 
 pd.pandas.set_option("display.max_columns", None)
 warnings.filterwarnings("ignore")
+
 
 features = []
 cat_vars = dict()
@@ -23,6 +26,7 @@ max_year = 2000
 scaler = None
 train_vars = None
 mode_vals = dict()
+
 
 def add_columns(df, is_test=False):
     global max_year
@@ -138,7 +142,9 @@ def prepare_test(data: pd.DataFrame):
             data[var] = 0
     data['insurance_price'] = np.log(data['insurance_price'])
     data[train_vars] = scaler.transform(data[train_vars])
-    return data[selected_feats]
+    selected_feats = pd.read_csv('model/saved_feats.csv')
+    return data[selected_feats['0']]
+
 
 dataset_name = os.environ["DATASET_NAME"]
 train_data = pd.read_csv(dataset_name)
