@@ -1,10 +1,9 @@
 FROM ubuntu:latest
 MAINTAINER Bohdan Kovalevych bohdan.kovalevych@nure.ua
 
-RUN apt-get -yqq update
-RUN apt-get install -yqq git
+RUN apt-get -y update
+RUN apt-get install -y git python-dev build-essential python3-pip python3
 
-RUN apt-get install -yqq python-dev build-essential python3-pip python3
 RUN git clone https://github.com/bkovalevych/big_data_service.git
 WORKDIR ./big_data_service/app
 RUN pip3 install -r requirements.txt
