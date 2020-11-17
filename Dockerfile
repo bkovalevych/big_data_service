@@ -12,4 +12,5 @@ ENV MODEL_NAME=model/model.pkl
 ENV DATASET_NAME=model/train.csv
 
 RUN python3 model/init_script.py
+EXPOSE 5000
 CMD python3 app.py
