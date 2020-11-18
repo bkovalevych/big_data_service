@@ -2,9 +2,9 @@ from flask import Flask, request, render_template
 import pandas as pd
 import os
 import sys
-sys.path.append(os.path.join(sys.path[0], 'model'))
-from model.data_pre_processing import process_data, cat_vars, features, dtypes, required_features
-from model.predict import predict as predict_func
+
+from app.model.data_pre_processing import process_data, cat_vars, features, dtypes, required_features
+from app.model.predict import predict as predict_func
 app = Flask(__name__)
 
 
@@ -54,5 +54,6 @@ def predict():
 
 if __name__ == "__main__":
     print("__name__")
+    port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0',
-            port=5000)
+            port=port)
