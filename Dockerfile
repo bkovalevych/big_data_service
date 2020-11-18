@@ -9,7 +9,7 @@ RUN git config --global http.sslverify "false"
 RUN git clone https://github.com/bkovalevych/big_data_service.git
 #RUN mv ./big_data_service/app/* /app
 WORKDIR ./big_data_service/app
-RUN pip3 install -r /app/requirements.txt
+RUN pip3 install -r requirements.txt
 
 ENV MODEL_NAME=model/model.pkl
 ENV DATASET_NAME=model/train.csv
