@@ -17,4 +17,4 @@ ENV DATASET_NAME=model/train.csv
 
 RUN python3 model/init_script.py
 
-CMD python3 app.py
+CMD python3 main.py
