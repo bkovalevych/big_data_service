@@ -3,8 +3,8 @@ import pickle
 import os
 import sys
 sys.path.append(os.path.join(sys.path[0], 'model'))
-from app.model.data_pre_processing import process_data
-from app.model.train import train_model
+from model.data_pre_processing import process_data
+from model.train import train_model
 
 
 model_name = os.environ["MODEL_NAME"]

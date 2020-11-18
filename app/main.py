@@ -3,8 +3,8 @@ import pandas as pd
 import os
 import sys
 sys.path.append(os.path.join(sys.path[0], 'model'))
-from app.model.data_pre_processing import process_data, cat_vars, features, dtypes, required_features
-from app.model.predict import predict as predict_func
+from model.data_pre_processing import process_data, cat_vars, features, dtypes, required_features
+from model.predict import predict as predict_func
 app = Flask(__name__)
 
 
