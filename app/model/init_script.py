@@ -2,6 +2,7 @@ import pandas as pd
 import pickle
 import os
 import sys
+sys.path.append(os.path.join(sys.path[0], 'model'))
 from app.model.data_pre_processing import process_data
 from app.model.train import train_model
 
