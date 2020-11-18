@@ -1,5 +1,5 @@
 # FROM tiangolo/uwsgi-nginx-flask:python3.8
-FROM python:3.7-alpine
+FROM python:3.7-slim
 MAINTAINER Bohdan Kovalevych bohdan.kovalevych@nure.ua
 
 RUN apt-get -y update
