@@ -8,7 +8,6 @@ from model.predict import predict as predict_func
 app = Flask(__name__)
 
 
-
 @app.route('/')
 def home():
     prepare_step = {}
