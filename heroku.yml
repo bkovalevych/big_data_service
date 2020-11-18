@@ -1,0 +1,4 @@
+run:
+  web:
+    command:
+      - python app/main.py
