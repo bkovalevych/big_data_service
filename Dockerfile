@@ -3,12 +3,13 @@ FROM python:3.7-slim
 MAINTAINER Bohdan Kovalevych bohdan.kovalevych@nure.ua
 
 RUN apt-get -y update
-RUN apt-get install -y git
+RUN apt-get install -y git libgomp1
 # python-dev build-essential python3-pip python3
 RUN git config --global http.sslverify "false"
 RUN git clone https://github.com/bkovalevych/big_data_service.git
 #RUN mv ./big_data_service/app/* /app
 WORKDIR ./big_data_service/app
+
 RUN pip3 install -r requirements.txt
 
 ENV MODEL_NAME=model/model.pkl
